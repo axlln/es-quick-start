@@ -1,0 +1,95 @@
+solutionName: "Axellon.Demo.Detailed"
+dataApi:
+    entityGroups:
+      - group: vehicles-group
+        enableHistory: true
+        useGroupFolder: true
+        projectsPrefix: Vehicles
+        readComponents:
+          - type: MongoDbComponent
+        writeComponents:
+          - type: ValidationComponent
+          - type: MongoDbComponent
+        endpoints:
+          - type: WebApiEndpoint
+
+      - group: tech-group
+        projectsPrefix: Tech
+        useGroupFolder: false
+        readComponents:
+          - type: MongoDbComponent
+        writeComponents:
+          - type: MongoDbComponent
+        endpoints:
+          - type: WebApiEndpoint
+
+groups:
+ - group: vehicles-group
+   entities:
+   - Car
+ - group: tech-group
+   entities:
+   - Amplifier
+
+
+entities:
+- entity: Car
+  pluralName: Cars
+  key:
+  - Id
+  properties:
+  - Id:
+      type: uuid
+      description: The unique identifier for the car
+  - Brand:
+      type: string
+      maxLength: 100
+      description: The brand of the car
+  - Model:
+      type: string
+      maxLength: 100
+      description: The model of the car
+  - Color:
+      type: string
+      maxLength: 50
+      description: The color of the car
+  - Price:
+      type: number
+      minValue: 0.01
+      description: The price of the car
+      precision: 18
+      scale: 2
+      format: decimal
+  - ProductionDate:
+      type: date-time
+      description: The production date of the car
+      format: date-only
+
+- entity: Amplifier
+  pluralName: Amplifiers
+  key:
+  - Id
+  properties:
+  - Id:
+      type: uuid
+      description: The unique identifier for the amplifier
+  - Brand:
+      type: string
+      defaultValue: Marshall
+      maxLength: 100
+      description: The brand of the amplifier
+  - Model:
+      type: string
+      maxLength: 100
+      description: The model of the amplifier
+  - Power:
+      type: number
+      nullable: True
+      minValue: 0.0
+      description: The power of the amplifier in watts
+      precision: 4
+      format: float
+  - HasReverb:
+      type: boolean
+      nullable: True
+      description: Indicates whether the amplifier has a reverb effect
