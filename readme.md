@@ -2,8 +2,8 @@
 
 # What is //entity services
 
-**//entity services** is a **free** tool for novel approach to C# software development.  
-It creates fully functional C# source code based on a simple configuration.  Generated solution also contains deployment scripts for Azure.
+**//entity services** is a **free** tool that will help you speed up the development of enterprise .NET solutions.  
+It creates fully functional C# source code based on a simple configuration. 
 
 Read more about [//entity services](https://entity.services/solution) , watch [short introduction video](https://youtu.be/ksIUNwSfV5g) or jump right into [documentation](https://docs.entity.services/overview/)!
 
@@ -35,11 +35,16 @@ Here is the development process with _//entity services_:
 
 Make sure that you have [.NET 6 installed](https://docs.microsoft.com/en-us/dotnet/core/install/) on your system.
 
+Add Entity Services NuGet Source:
+
+```
+dotnet nuget add source https://pkgs.dev.azure.com/entityservices/nugets-lite/_packaging/es-lite/nuget/v3/index.json --name entityservices 
+```
 
 Install Entity Services Builder Cli:
 
 ```
-dotnet tool install EntityServices.Builder.Cli -g
+dotnet tool install es-builder-cli -g
 ```
 
 where flag `-g` will install it globally.
@@ -101,9 +106,6 @@ When build command is started, it will use `.yml` configuration file(s) to creat
 ![build-process](img/build.png)
 
 In aproximatelly 60 seconds you will have complete source code of the solution downloaded in your folder.
-
-![generated-solution](img/es-generatd-solution.png)
-
 
 
 ## 4. Customize generated source code
