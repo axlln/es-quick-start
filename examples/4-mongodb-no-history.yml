@@ -2,7 +2,7 @@ solutionName: "Axellon.SimpleHistory"
 dataApi:
     entityGroups:
       - group: default
-        enableHistory: true
+        enableHistory: false
         readComponents:
           - type: MongoDbComponent
         writeComponents:
