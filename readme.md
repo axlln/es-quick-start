@@ -1,11 +1,9 @@
-
-
 # What is //entity services
 
-**//entity services** is a **free** tool that will help you speed up the development of enterprise .NET solutions.  
-It creates fully functional C# source code based on a simple configuration. 
+**//entity services** is a **free** tool that will help you speed up the development of enterprise .NET solutions.
+It creates fully functional C# source code based on a simple configuration.
 
-Read more about [//entity services](https://entity.services/solution) , watch [short introduction video](https://youtu.be/ksIUNwSfV5g) or jump right into [documentation](https://docs.entity.services/overview/)!
+Read more about [//entity services](https://entity.services/solution) , watch [short introduction video](https://youtu.be/ksIUNwSfV5g), browse the [documentation](https://docs.entity.services/overview/) or follow the [quick start](#quickstart) instructions to try it out!
 
 ![entity services](img/simple_es_process.png)
 
@@ -15,9 +13,10 @@ Generated source code is yours. You can change it as you want and use it in the 
 
 # Contributing
 
-We would like to get your feedback!  
-We are using [discussions page](https://github.com/axlln/playground-docs/discussions) as a place to connect with other members of our community. 
-Ask questions you’re wondering about, share ideas, engage with other community members.  
+We would like to get your feedback!
+
+We are using [discussions page](https://github.com/axlln/playground-docs/discussions) as a place to connect with other members of our community.
+Ask questions you are wondering about, share ideas, engage with other community members.
 Remember that this is a community we build together 💪.
 
 # Quickstart
@@ -52,35 +51,46 @@ where flag `-g` will install it globally.
 ## 2. Define solution components
 
 `es-builder` tool will create source code based on yaml files that define:
-* configuration of entities, 
+
+* configuration of entities,
 * selected components for repository (Entity Framework, Azure Cosmos Db, etc.) and
 * configuration of project naming and files structure.
 
-The easiest way to define entities is using [//entity services portal](https://portal.entity.services).  The portal provides forms to manage entities and their properties.  The AI enhanced prompt helps creating multiple entities models in few seconds. 
+### Entity Services Portal
 
-Save yaml definitions as local file(s) into your working folder or subfolder.  Use extension `.yml`.
+The easiest way to define entities is using [//entity services portal](https://portal.entity.services).  The portal provides forms to manage entities and their properties.  The AI enhanced prompt helps creating multiple entities models in few seconds.
 
-In folder `\examples` of this repo you will find examples of configuration.  Here is a snippet:
+![portal](img/portal.png)
+
+The portal comes pre-populated with a simple example of entities for a bookstore solution but you can easily create the entities that fit your needs.
+
+Examples of prompts:
+
+* `Clear all  ` (clears the current content)
+* `Create entities for Pub management solution`
+* `I am creating an app for NHS. Created entities should include Hospital, Patient and Doctor`
+* `Change Doctor entity to Physician`
+
+Copy the generated yaml that describes the entities and save it as local file(s) into your working folder or subfolder.  Use extension `.yml`.
+
+You will also need to define the components of the solution. The easiest way is to choose one of the configuration examples ([entity-framework-quickstart.yml](examples/3-entity-framework-quickstart.yml) if you want to use Sql Server or [mongodb-quickstart.yml ](examples/mongodb-quickstart.yml)for NoSql database) in this repo and replace the entities with the one you created.
+
+In folder `\examples` of this repo you will find examples of configuration.  Here is a snippet you can use:
 
 ```yml
-entities:
-- entity: User
-  pluralName: Users
-  key:
-    - Id
-  properties:
-    - Id:
-        type: uuid
-        description: The unique identifier for the user
-    - Name:
-        type: string
-        maxLength: 100
-        description: The name of the user
-    - Age:
-        type: int
-        min: 0
-        maxLength: 150
-        description: The age of the user
+solutionName: "Axellon.Simple"
+dataApi:
+    entityGroups:
+      - group: default
+        enableHistory: false
+        useGroupFolder: true
+        readComponents:
+          - type: MongoDbComponent
+        writeComponents:
+          - type: ValidationComponent
+          - type: MongoDbComponent
+        endpoints:
+          - type: WebApiEndpoint
 
 ```
 
@@ -93,6 +103,7 @@ Run the `login` command:
 ```
 es-builder login
 ```
+
 If the CLI can open your default browser, it will open Entity Services page for login or sign-up.
 
 After successful login, start the build process with command:
@@ -101,12 +112,11 @@ After successful login, start the build process with command:
 es-builder build
 ```
 
-When build command is started, it will use `.yml` configuration file(s) to create source code and store solution files in defined location. 
+When build command is started, it will use `.yml` configuration file(s) to create source code and store solution files in defined location.
 
 ![build-process](img/build.png)
 
 In aproximatelly 60 seconds you will have complete source code of the solution downloaded in your folder.
-
 
 ## 4. Customize generated source code
 
@@ -116,27 +126,25 @@ Here are main **components** of generated solution:
 
 ![entity services](img/main-components-of-generated-solution.jpg)
 
-
 ## 5. Build and run your solution
 
 Right-click on `*.WebApi` project and select option `"Set as Startup Project"`.
 
-Now you can build and run your solution.  
+Now you can build and run your solution.
 
 ### Enjoy coding things that matter and run your new solution!
 
 ## 6. Easily test your application with generated scripts
 
-
 ### Http files
+
 WebApi project contains folder `HttpEndpoints` with _.http_ files. Their purpose is to allow executing HTTP commands via Visual Studio Code extension [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). Generated _.http_ files can also be used in  Visual Studio or Rider environments, with minimal adjustments.
 
 ### Open API Web UI
-Based on default settings in app.settings, upon start of WebApi project, web browser will be opened with OpenApi UI at the route `/interactive-docs`.
 
+Based on default settings in app.settings, upon start of WebApi project, web browser will be opened with OpenApi UI at the route `/interactive-docs`.
 
 # Need help?
 
 * [Documentation](https://docs.entity.services)
-
 * [Contact us](https://entity.services/#contactAnchor)

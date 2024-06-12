@@ -1,8 +1,9 @@
-solutionName: "Axellon.SimpleHistory"
+solutionName: "Axellon.SimpleNoSql"
 dataApi:
     entityGroups:
       - group: default
         enableHistory: false
+        useGroupFolder: true
         readComponents:
           - type: MongoDbComponent
         writeComponents:
