@@ -1,7 +1,12 @@
 # What is //entity services
 
 **//entity services** is a **free** tool that will help you speed up the development of enterprise .NET solutions.
-It creates fully functional C# source code based on a simple configuration.
+It creates fully functional C# source code based on a simple configuration.  
+Generated source code is customizable and it includes:
+ * Web API project,
+ * data-centric entities models,
+ * read repository pipeline project with caching and security components, and
+ * write repository pipeline with validation and security components.
 
 Read more about [//entity services](https://entity.services/solution) , watch [short introduction video](https://youtu.be/ksIUNwSfV5g), browse the [documentation](https://docs.entity.services/overview/) or follow the [quick start](#quickstart) instructions to try it out!
 
@@ -50,7 +55,7 @@ where flag `-g` will install it globally.
 
 ## 2. Define solution components
 
-`es-builder` tool will create source code based on yaml files that define:
+`es-builder` tool will create source code based on YAML files that define:
 
 * configuration of entities,
 * selected components for repository (Entity Framework, Azure Cosmos Db, etc.) and
@@ -62,20 +67,21 @@ The easiest way to define entities is using [//entity services portal](https://p
 
 ![portal](img/portal.png)
 
-The portal comes pre-populated with a simple example of entities for a bookstore solution but you can easily create the entities that fit your needs.
+The portal comes pre-populated with a simple example of entities for a bookstore solution, but you can easily create the entities that fit your needs.
 
 Examples of prompts:
 
-* `Clear all  ` (clears the current content)
+* `Clear all` (clears the current content)
 * `Create entities for Pub management solution`
 * `I am creating an app for NHS. Created entities should include Hospital, Patient and Doctor`
-* `Change Doctor entity to Physician`
+* `Rename entity Doctor to Physician`
+* `Set max length of all string properties of entity Physician to 200`
 
-Copy the generated yaml that describes the entities and save it as local file(s) into your working folder or subfolder.  Use extension `.yml`.
+Copy the generated YAML that describes the entities and save it as local file(s) into your working folder or subfolder.  Use the extension `.yml`.
 
-You will also need to define the components of the solution. The easiest way is to choose one of the configuration examples ([entity-framework-quickstart.yml](examples/3-entity-framework-quickstart.yml) if you want to use Sql Server or [mongodb-quickstart.yml ](examples/mongodb-quickstart.yml)for NoSql database) in this repo and replace the entities with the one you created.
+You will also need to define the components of the solution. The easiest way is to choose one of the configuration examples from this repo, such as [examples/entity-framework-quickstart.yml](examples/3-entity-framework-quickstart.yml) if you want to use Sql Server, or [examples/mongodb-quickstart.yml ](examples/mongodb-quickstart.yml) for NoSql database.  Make sure to replace the entities with the one you created.
 
-In folder `\examples` of this repo you will find examples of configuration.  Here is a snippet you can use:
+In folder `/examples` of this repo, you will find other examples of configuration.  Here is a snippet you can use:
 
 ```yml
 solutionName: "Axellon.Simple"
@@ -96,7 +102,7 @@ dataApi:
 
 ## 3. Start source code builder
 
-Before using other `es-builder` CLI commands, you need to sign in.
+Before using `es-builder` CLI commands, you need to sign in.
 
 Run the `login` command:
 
@@ -104,7 +110,7 @@ Run the `login` command:
 es-builder login
 ```
 
-If the CLI can open your default browser, it will open Entity Services page for login or sign-up.
+If the CLI can open your default browser, it will open Entity.Services page for login or sign-up.
 
 After successful login, start the build process with command:
 
@@ -112,7 +118,7 @@ After successful login, start the build process with command:
 es-builder build
 ```
 
-When build command is started, it will use `.yml` configuration file(s) to create source code and store solution files in defined location.
+When build command is started, it will use `.yml` configuration file(s) to create source code and store solution files in defined location.  The default location it the folder where you started `es-builder`.
 
 ![build-process](img/build.png)
 
@@ -128,7 +134,8 @@ Here are main **components** of generated solution:
 
 ## 5. Build and run your solution
 
-Right-click on `*.WebApi` project and select option `"Set as Startup Project"`.
+Make sure to set Web API project as your startup project.  
+For example, if you are using Visual Studio, right-click on `*.WebApi` project and select option `"Set as Startup Project"`.
 
 Now you can build and run your solution.
 
@@ -142,7 +149,7 @@ WebApi project contains folder `HttpEndpoints` with _.http_ files. Their purpose
 
 ### Open API Web UI
 
-Based on default settings in app.settings, upon start of WebApi project, web browser will be opened with OpenApi UI at the route `/interactive-docs`.
+Based on default settings in `app.settings`, upon start of WebApi project, web browser will be opened with OpenApi UI at the route `/interactive-docs`.
 
 # Need help?
 
