@@ -6,11 +6,10 @@ Using this FREE version, in just few minutes you can create fully functional C# 
 
 **Generated .NET solution includes**:
 
-    **Data layer projects** that follow repository pattern with read and write pipelines composed of components for validation, caching, security and with various storage options (SQL Server, MongoDB,..),
+*  **Data layer projects** that follow repository pattern with read and write pipelines composed of components for validation, caching, security and with various storage options (SQL Server, MongoDB,..),
+*  **Data-centric entities models**,
 
-    **Data-centric entities models**,
-
-    **Web API project** that exposes endpoints with standard CRUD methods with versioning, API documentation and .http files for testing
+*  **Web API project** that exposes endpoints with standard CRUD methods with versioning, API documentation and .http files for testing
 
 The solution follows industry best practices, it is designed to be easily customizable and deployed to any cloud or on premisses.
 
@@ -165,7 +164,7 @@ The example of the connection string for Azure CosmosDb Mongo database
 mongodb://my-demo-cosmos-account:<-secret->@my-demo-cosmos-account.mongo.cosmos.azure.com:10255/our-mongo?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@my-demo-cosmos-account@
 ```
 
-    !! replace <-secret-> with your secret and don't forget to restart the Visual Studio to pickup the new env variable
+Replace <-secret-> with your secret and don't forget to restart the Visual Studio to pickup the new env variable.
 
 **Collections**
 
@@ -183,7 +182,7 @@ To use Sql Server database you have to provide a connection string and create th
 
 The application will take the connection string from environment variable, appsettings file or user secrets file.
 
-The connection string variable name should be` ConnectionStrings__SqlConnectionString`
+The connection string variable name should be ` ConnectionStrings__SqlConnectionString`
 
 **Database Tables**
 
@@ -207,8 +206,6 @@ dotnet ef database update
 	--context AssetEntityContext 
 	-- --cs "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Test;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
 ```
-
-
 
 Now you can build and run your solution.
 
