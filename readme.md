@@ -25,7 +25,7 @@ Generated source code is yours. You can change it as you want and use it in the 
 
 We would like to get your feedback!
 
-We are using [discussions page](https://github.com/axlln/playground-docs/discussions) as a place to connect with other members of our community.
+We are using [discussions page](https://github.com/axlln/es-quick-start/discussions) as a place to connect with other members of our community.
 Ask questions you are wondering about, share ideas, engage with other community members.
 Remember that this is a community we build together 💪.
 
