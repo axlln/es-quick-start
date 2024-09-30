@@ -2,7 +2,13 @@
 
 **//entity services** is a tool that will help you speed up the development of enterprise .NET solutions.
 
-Using this FREE version, in just few minutes you can create fully functional C# source code based on a simple configuration.
+Using //entity services, in just few minutes you can create fully functional C# source code based on a simple configuration.
+
+We don't use ChatGPT or one of the LLMs to generate the code based on the configuration,
+//entity services uses **smart templates** and **architecture carefully designed and tested by our experts** to produce code that is consistent, reproducable, secure, customisible and extendable.
+
+We use AI ONLY as just as another way for defining and generating the configuration files using natural language, not for the code generation.
+
 
 **Generated .NET solution includes**:
 
